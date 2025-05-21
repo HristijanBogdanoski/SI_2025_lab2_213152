@@ -56,7 +56,6 @@ public class SILab2Test {
     }
 
     // Multiple Condition combinations (for if (price > 300 || discount > 0 || quantity > 10))
-    // price > 300: false, discount > 0: false, quantity > 10: false
     @Test
     public void test_Condition_FalseFalseFalse() {
         List<Item> items = List.of(new Item("Item", 5, 100, 0.0));
@@ -64,7 +63,6 @@ public class SILab2Test {
         assertEquals(500.0, result);  // no penalty, no discount
     }
 
-    // price > 300: false, discount > 0: false, quantity > 10: true
     @Test
     public void test_Condition_FalseFalseTrue() {
         List<Item> items = List.of(new Item("Item", 11, 100, 0.0));
@@ -73,7 +71,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: false, discount > 0: true, quantity > 10: false
     @Test
     public void test_Condition_FalseTrueFalse() {
         List<Item> items = List.of(new Item("Item", 5, 100, 0.1));
@@ -82,7 +79,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: false, discount > 0: true, quantity > 10: true
     @Test
     public void test_Condition_FalseTrueTrue() {
         List<Item> items = List.of(new Item("Item", 15, 100, 0.2));
@@ -91,7 +87,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: true, discount > 0: false, quantity > 10: false
     @Test
     public void test_Condition_TrueFalseFalse() {
         List<Item> items = List.of(new Item("Item", 5, 400, 0.0));
@@ -100,7 +95,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: true, discount > 0: false, quantity > 10: true
     @Test
     public void test_Condition_TrueFalseTrue() {
         List<Item> items = List.of(new Item("Item", 15, 400, 0.0));
@@ -109,7 +103,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: true, discount > 0: true, quantity > 10: false
     @Test
     public void test_Condition_TrueTrueFalse() {
         List<Item> items = List.of(new Item("Item", 5, 400, 0.1));
@@ -118,7 +111,6 @@ public class SILab2Test {
         assertEquals(expected, result);
     }
 
-    // price > 300: true, discount > 0: true, quantity > 10: true
     @Test
     public void test_Condition_TrueTrueTrue() {
         List<Item> items = List.of(new Item("Item", 20, 500, 0.2));
