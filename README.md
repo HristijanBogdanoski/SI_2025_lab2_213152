@@ -41,16 +41,50 @@ P = Број на поврзани компоненти
 |  5 | Invalid card number                               | `RuntimeException`        | 
 |  6 | Invalid character in card number                  | `RuntimeException`        | 
 
+За да се постигне критериумот Every Statement, потребни се најмалку 4 до 5 тест случаи, кои заедно ќе ги извршат сите изјави (statements) во методата checkCart.
 # Multiple Condition Coverage
 
 | Цена > 300 | Попуст > 0 | Количина > 10 | Резултат                       |
 | ---------- | ---------- | ------------- | ------------------------------ |  
 | false      | true       | false         |   Влегува                      |  
-| false      | true       | false         | 	Влегува                      |  
+| false      | false      | true          | 	Влегува                      |
+| false      | true       | true          | 	Влегува                      |  
 | false      | false      | false         | 	НЕ влегува во if             |  
 | true       | false      | false         | 	Влегува                      |  
 | true       | false      | true          | 	Влегува                      |  
 | true       | true       | false         | 	Влегува                      |  
 | true       | true       | true          | 	Влегува                      |
 
+За Multiple Condition критериумот, мора да се тестираат сите можни комбинации од вистинито/невистинито (true/false) за тие три услови.
+Бројот на можни комбинации е 8.
 
+
+# Објаснување на тестовите
+## Every Statement Criterion
+
+test_NullItemList_ThrowsException
+Го активира if (allItems == null) → фрла исклучок. Овој тест проверува дали функцијата правилно фрла грешка ако allItems е null.
+
+test_InvalidItemName_ThrowsException
+Го активира if (item.getName() == null || item.getName().length() == 0) → фрла исклучок.
+Овој тест покрива случај кога има невалидно име (празен стринг).
+
+test_DiscountedItem_TriggersPenalty
+Активира if (price > 300 || discount > 0 || quantity > 10) → вистинито → -30.
+Ги активира и изразите за калкулација со попуст.
+Овозможува покриеност на наредбите во гранките со попуст и казна.
+
+test_ItemWithoutDiscount
+Покрива гранка каде попуст е 0 → калкулација без попуст.
+Ги активира само позитивните патеки (без казна).
+
+test_InvalidCardNumber_Length
+Активира else во if (cardNumber != null && cardNumber.length() == 16) → фрла грешка.
+
+test_InvalidCardNumber_Character
+Активира внатрешната for-проверка на дозволени карактери → фрла грешка.
+
+## Multiple Condition Criterion
+Секој тест ги користи валидни влезни податоци.
+Проверува дали се применува попуст и казна според очекуваната логика.
+Ја тестира точноста на изразот if (condition1 || condition2 || condition3) со точно една комбинација од логички вредности.
